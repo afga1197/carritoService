@@ -11,20 +11,6 @@ public class Cliente {
 	private long telefono;
 	private String usuario;
 
-	public Cliente(String apellido, long dni, String email, int idCliente, String nombre, long telefono) {
-		this.apellido = apellido;
-		this.dni = dni;
-		this.email = email;
-		this.idCliente = idCliente;
-		this.nombre = nombre;
-		this.telefono = telefono;
-	}
-
-	public Cliente(String constrasenia, String usuario) {
-		this.constrasenia = constrasenia;
-		this.usuario = usuario;
-	}
-
 	public String getApellido() {
 		return apellido;
 	}
