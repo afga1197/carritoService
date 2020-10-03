@@ -51,7 +51,7 @@ public class ClienteDaoImp implements ClienteDao {
 		try {
 			conectar = Conexion.getInstance().getConnection();
 			if (conectar != null) {
-				String query = "INSERT INTO cliente (nombre, apellido, dni, telefono, email)  VALUES(?,?,?,?,?)";
+				String query = "INSERT INTO cliente (nombre, apellido, dni, telefono, email) VALUES(?,?,?,?,?)";
 				preparedStatement = conectar.prepareStatement(query);
 				preparedStatement.setString(1, cliente.getNombre());
 				preparedStatement.setString(2, cliente.getApellido());
