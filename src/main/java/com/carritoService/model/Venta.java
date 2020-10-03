@@ -10,26 +10,6 @@ public class Venta {
 	private int idProducto;
 	private Date fecha;
 
-	public Venta(int idVenta, int idDetalleVenta, int idCliente, int idProducto, Date fecha) {
-		this.idVenta = idVenta;
-		this.idDetalleVenta = idDetalleVenta;
-		this.idCliente = idCliente;
-		this.idProducto = idProducto;
-		this.fecha = fecha;
-	}
-
-	public Venta(int idVenta, int idCliente, Date fecha) {
-		this.idVenta = idVenta;
-		this.idCliente = idCliente;
-		this.fecha = fecha;
-	}
-
-	public Venta(int idVenta, int idDetalleVenta, int idProducto) {
-		this.idVenta = idVenta;
-		this.idDetalleVenta = idDetalleVenta;
-		this.idProducto = idProducto;
-	}
-
 	public int getIdVenta() {
 		return idVenta;
 	}
