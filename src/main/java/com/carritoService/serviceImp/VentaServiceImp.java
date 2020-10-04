@@ -25,4 +25,10 @@ public class VentaServiceImp implements VentaService{
 		return ventaDao.guardarVenta(venta);
 	}
 
+	@Override
+	public boolean guardarDetalleVenta(Venta venta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

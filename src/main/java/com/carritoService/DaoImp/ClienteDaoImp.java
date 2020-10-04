@@ -175,7 +175,7 @@ public class ClienteDaoImp implements ClienteDao {
 			cliente.setRoles(roles);
 			return cliente;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query " + e.getMessage());
+			System.out.print("Error en la ejecucion del query 123" + e.getMessage());
 			return null;
 		} finally {
 			try {

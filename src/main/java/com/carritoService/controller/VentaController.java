@@ -37,4 +37,13 @@ public class VentaController {
 		}
 	}
 	
+	@PostMapping("/crear")
+	public ResponseEntity<?> saveDetalleVenta(@RequestBody Venta venta) {
+		if (ventaService.guardarDetalleVenta(venta)) {
+			return new ResponseEntity("El producto fue creado satisfactoriamente", HttpStatus.OK);
+		} else {
+			return new ResponseEntity("El producto no se pudo crear", HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 }

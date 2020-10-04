@@ -10,4 +10,6 @@ public interface VentaService {
 
 	boolean guardarVenta(Venta venta);
 
+	boolean guardarDetalleVenta(Venta venta);
+
 }
