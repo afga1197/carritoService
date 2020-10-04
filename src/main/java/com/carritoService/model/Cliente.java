@@ -1,5 +1,8 @@
 package com.carritoService.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Cliente {
 
 	private String apellido;
@@ -10,6 +13,7 @@ public class Cliente {
 	private String nombre;
 	private long telefono;
 	private String usuario;
+	private Set<Rol> roles = new HashSet<>();
 
 	public String getApellido() {
 		return apellido;
@@ -73,6 +77,14 @@ public class Cliente {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+
+	public Set<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Rol> roles) {
+		this.roles = roles;
 	}
 
 }
