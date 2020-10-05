@@ -1,29 +1,29 @@
 package com.carritoService.security;
 
 import java.util.Date;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
-
-import com.carritoService.model.ClientesSeguridad;
-
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
+import org.apache.logging.log4j.Logger;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.ExpiredJwtException;
+import org.apache.logging.log4j.LogManager;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import org.springframework.stereotype.Component;
+import com.carritoService.model.ClientesSeguridad;
+import org.springframework.security.core.Authentication;
+import org.springframework.beans.factory.annotation.Value;
 
 @Component
 public class JWTProvider {
-	/* crea el token y tambien valida si el token esta bien formado */
 
 	@Value("${jwt.secret}")
 	private String secret;
 
 	@Value("${jwt.expiration}")
 	private int expiration;
+
+	private static final Logger logger = LogManager.getLogger("seguridad");
 
 	public String generarToken(Authentication authentication) {
 		ClientesSeguridad clienteSeguridad = (ClientesSeguridad) authentication.getPrincipal();
@@ -42,15 +42,20 @@ public class JWTProvider {
 			Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
 			return true;
 		} catch (MalformedJwtException e) {
-			System.out.println("token mal formado");
+			String log = "Token mal formado, con excepcion en: " + e.getMessage();
+			logger.error(log);
 		} catch (UnsupportedJwtException e) {
-			System.out.println("token no soportado");
+			String log = "Token no soportado, con excepcion en: " + e.getMessage();
+			logger.error(log);
 		} catch (ExpiredJwtException e) {
-			System.out.println("token expirado");
+			String log = "Token expirado, con excepcion en: " + e.getMessage();
+			logger.error(log);
 		} catch (IllegalArgumentException e) {
-			System.out.println("token vacío");
+			String log = "Token vacio, con excepcion en: " + e.getMessage();
+			logger.error(log);
 		} catch (SignatureException e) {
-			System.out.println("fail en la firma");
+			String log = "Fallo en la firma, con excepcion en: " + e.getMessage();
+			logger.error(log);
 		}
 		return false;
 	}

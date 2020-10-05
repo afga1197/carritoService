@@ -1,20 +1,21 @@
 package com.carritoService.DaoImp;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.stereotype.Repository;
-
-import com.carritoService.Dao.ProductoDao;
-import com.carritoService.model.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import org.apache.logging.log4j.Logger;
 import com.carritoService.model.Producto;
+import com.carritoService.model.Conexion;
+import com.carritoService.Dao.ProductoDao;
+import org.apache.logging.log4j.LogManager;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProductoDaoImp implements ProductoDao {
 
+	private static final Logger logger = LogManager.getLogger("producto");
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 
@@ -36,17 +37,20 @@ public class ProductoDaoImp implements ProductoDao {
 					productos.add(producto);
 				}
 			} else {
-				System.out.print("Error al conectarse a base de datos");
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 			}
 			return productos;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query" + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return null;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}
@@ -64,21 +68,27 @@ public class ProductoDaoImp implements ProductoDao {
 				preparedStatement.setDouble(2, producto.getPrecio());
 				preparedStatement.executeUpdate();
 				guardo = true;
+				String log = "Se almaceno el producto en base de datos";
+				logger.debug(log);
 			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 				guardo = false;
 			}
 			return guardo;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query " + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return false;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -95,18 +105,24 @@ public class ProductoDaoImp implements ProductoDao {
 				preparedStatement.setInt(3, producto.getIdProducto());
 				preparedStatement.executeUpdate();
 				actualizo = true;
+				String log = "Se actualizo el producto en base de datos";
+				logger.debug(log);
 			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 				actualizo = false;
 			}
 			return actualizo;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query " + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return false;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}
@@ -123,18 +139,24 @@ public class ProductoDaoImp implements ProductoDao {
 				preparedStatement.setInt(1, id);
 				preparedStatement.executeUpdate();
 				borro = true;
+				String log = "Se elimino el producto de base de datos";
+				logger.debug(log);
 			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 				borro = false;
 			}
 			return borro;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query " + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return false;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}

@@ -1,29 +1,29 @@
 package com.carritoService.DaoImp;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.Set;
 import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.sql.ResultSet;
+import java.sql.Connection;
 import java.io.IOException;
-
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Repository;
-import com.carritoService.Dao.ClienteDao;
+import java.io.BufferedWriter;
+import java.sql.PreparedStatement;
+import com.carritoService.model.Rol;
+import java.io.FileNotFoundException;
+import org.apache.logging.log4j.Logger;
 import com.carritoService.model.Cliente;
 import com.carritoService.model.Conexion;
-import com.carritoService.model.Rol;
+import com.carritoService.Dao.ClienteDao;
 import com.carritoService.model.RolNombre;
+import org.apache.logging.log4j.LogManager;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class ClienteDaoImp implements ClienteDao {
 
+	private static final Logger logger = LogManager.getLogger("cliente");
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 
@@ -42,17 +42,20 @@ public class ClienteDaoImp implements ClienteDao {
 					existe = true;
 				}
 			} else {
-				System.out.print("Error al conectarse a base de datos");
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 			}
 			return existe;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query" + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return false;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}
@@ -73,18 +76,24 @@ public class ClienteDaoImp implements ClienteDao {
 				preparedStatement.setString(5, cliente.getEmail());
 				preparedStatement.executeUpdate();
 				guardo = true;
+				String log = "Se almaceno el cliente en la base de datos";
+				logger.debug(log);
 			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 				guardo = false;
 			}
 			return guardo;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query " + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return false;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}
@@ -109,12 +118,17 @@ public class ClienteDaoImp implements ClienteDao {
 					bw.write(contenido);
 					bw.close();
 				}
+				String log = "Se almacenaron las credenciales del usuario";
+				logger.debug(log);
 				return true;
 			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 				return false;
 			}
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
+			String log = "Error en la escritura del archivo, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return false;
 		}
 	}
@@ -132,16 +146,21 @@ public class ClienteDaoImp implements ClienteDao {
 				while (resultSet.next()) {
 					idCliente = resultSet.getInt("idCliente");
 				}
+			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 			}
 			return idCliente;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query " + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return 0;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}
@@ -164,6 +183,9 @@ public class ClienteDaoImp implements ClienteDao {
 					cliente.setTelefono(Long.parseLong(resultSet.getString("telefono")));
 					cliente.setEmail(resultSet.getString("email"));
 				}
+			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
 			}
 			Set<Rol> roles = new HashSet<>();
 			Rol rolUser = new Rol((RolNombre.ROLE_USER));
@@ -175,13 +197,15 @@ public class ClienteDaoImp implements ClienteDao {
 			cliente.setRoles(roles);
 			return cliente;
 		} catch (Exception e) {
-			System.out.print("Error en la ejecucion del query 123" + e.getMessage());
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return null;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);
 			} catch (Exception e) {
-				System.out.println("Error al cerrar la conexion: " + e.getMessage());
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
 			}
 		}
 	}
@@ -208,7 +232,8 @@ public class ClienteDaoImp implements ClienteDao {
 			scanner.close();
 			return cliente;
 		} catch (FileNotFoundException e) {
-			System.out.println(e.getMessage());
+			String log = "Error en la lectura del archivo TXT, con excepcion en " + e.getMessage();
+			logger.error(log);
 			return null;
 		}
 	}

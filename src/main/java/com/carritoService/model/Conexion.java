@@ -3,6 +3,8 @@ package com.carritoService.model;
 import java.sql.Connection;
 import java.sql.SQLException;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Conexion {
 
@@ -12,6 +14,7 @@ public class Conexion {
 	private final String PASSWORD = "root";
 	private static Conexion conexion;
 	private BasicDataSource basicDataSource = null;
+	private static final Logger logger = LogManager.getLogger("conexion");
 
 	private Conexion() {
 		basicDataSource = new BasicDataSource();
@@ -34,7 +37,8 @@ public class Conexion {
 		try {
 			return this.basicDataSource.getConnection();
 		} catch (SQLException e) {
-			System.err.print(e.getMessage());
+			String log = "Error en la conexion, con excepcion en: " + e.getMessage();
+			logger.error(log);
 			return null;
 		}
 	}
@@ -43,7 +47,8 @@ public class Conexion {
 		try {
 			connection.close();
 		} catch (SQLException e) {
-			System.err.print(e.getMessage());
+			String log = "Error en la conexion, con excepcion en: " + e.getMessage();
+			logger.error(log);
 		}
 	}
 }

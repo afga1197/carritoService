@@ -1,20 +1,18 @@
 package com.carritoService.serviceImp;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.carritoService.Dao.ProductoDao;
 import com.carritoService.model.Producto;
+import com.carritoService.Dao.ProductoDao;
+import org.springframework.stereotype.Service;
 import com.carritoService.service.ProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ProductoServiceImp implements ProductoService {
 
 	@Autowired
 	private ProductoDao productoDao;
-	
+
 	@Override
 	public List<Producto> obtenerProductos() {
 		return productoDao.obtenerProductos();

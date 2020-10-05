@@ -1,20 +1,18 @@
 package com.carritoService.serviceImp;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.carritoService.Dao.VentaDao;
 import com.carritoService.model.Venta;
+import com.carritoService.Dao.VentaDao;
+import org.springframework.stereotype.Service;
 import com.carritoService.service.VentaService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class VentaServiceImp implements VentaService{
+public class VentaServiceImp implements VentaService {
 
 	@Autowired
 	private VentaDao ventaDao;
-	
+
 	@Override
 	public List<Venta> obtenerVentas() {
 		return ventaDao.obtenerVentas();
@@ -27,8 +25,7 @@ public class VentaServiceImp implements VentaService{
 
 	@Override
 	public boolean guardarDetalleVenta(Venta venta) {
-		// TODO Auto-generated method stub
-		return false;
+		return ventaDao.guardarDetalleVenta(venta);
 	}
 
 }

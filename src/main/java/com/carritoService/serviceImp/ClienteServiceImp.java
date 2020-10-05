@@ -1,21 +1,21 @@
 package com.carritoService.serviceImp;
 
+import com.carritoService.model.Cliente;
+import com.carritoService.Dao.ClienteDao;
+import org.springframework.stereotype.Service;
+import com.carritoService.service.ClienteService;
+import com.carritoService.model.ClientesSeguridad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import com.carritoService.Dao.ClienteDao;
-import com.carritoService.model.Cliente;
-import com.carritoService.model.ClientesSeguridad;
-import com.carritoService.service.ClienteService;
 
 @Service
-public class ClienteServiceImp implements ClienteService, UserDetailsService{
+public class ClienteServiceImp implements ClienteService, UserDetailsService {
 
 	@Autowired
 	private ClienteDao clienteDao;
-	
+
 	@Override
 	public boolean existeUsuario(long dni) {
 		return clienteDao.existeUsuario(dni);
