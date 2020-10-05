@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ClienteDaoImp implements ClienteDao {
 
-	private static final Logger logger = LogManager.getLogger("cliente");
+	private static final Logger logger = LogManager.getLogger("usuario");
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 
