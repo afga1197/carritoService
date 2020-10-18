@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ClienteDaoImp implements ClienteDao {
 
-	private static final Logger logger = LogManager.getLogger("usuario");
+	private static final Logger logger = LogManager.getLogger(ClienteDaoImp.class);
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 
@@ -41,10 +41,13 @@ public class ClienteDaoImp implements ClienteDao {
 				while (resultSet.next()) {
 					existe = true;
 				}
+				String log = "Se realizo la consulta a la base de datos";
+				logger.info(log);
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);
 			}
+
 			return existe;
 		} catch (Exception e) {
 			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
@@ -77,7 +80,7 @@ public class ClienteDaoImp implements ClienteDao {
 				preparedStatement.executeUpdate();
 				guardo = true;
 				String log = "Se almaceno el cliente en la base de datos";
-				logger.debug(log);
+				logger.info(log);
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);
@@ -146,10 +149,14 @@ public class ClienteDaoImp implements ClienteDao {
 				while (resultSet.next()) {
 					idCliente = resultSet.getInt("idCliente");
 				}
+				String log = "Se consultaron las credenciales del usuario";
+				logger.debug(log);
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);
 			}
+			String log = "Se almacenaron las credenciales del usuario";
+			logger.debug(log);
 			return idCliente;
 		} catch (Exception e) {
 			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
@@ -183,6 +190,8 @@ public class ClienteDaoImp implements ClienteDao {
 					cliente.setTelefono(Long.parseLong(resultSet.getString("telefono")));
 					cliente.setEmail(resultSet.getString("email"));
 				}
+				String log = "Se consultaron los datos del cliente a la base de datos";
+				logger.debug(log);
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);
@@ -229,6 +238,8 @@ public class ClienteDaoImp implements ClienteDao {
 					break;
 				}
 			}
+			String log = "Se obtuvieron las credenciales del usuario";
+			logger.debug(log);
 			scanner.close();
 			return cliente;
 		} catch (FileNotFoundException e) {

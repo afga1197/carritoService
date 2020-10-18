@@ -1,8 +1,10 @@
 package com.carritoService.controller;
 
 import java.util.List;
+import org.apache.logging.log4j.Logger;
 import com.carritoService.model.Producto;
 import org.springframework.http.HttpStatus;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.http.ResponseEntity;
 import com.carritoService.service.ProductoService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,11 +25,13 @@ public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 	
-	private static final Logger logger = LogManager.getLogger("producto");
+	private static final Logger logger = LogManager.getLogger(Producto.class);
 
 	@GetMapping("/listar")
 	public ResponseEntity<List<Producto>> listar() {
 		List<Producto> productos = productoService.obtenerProductos();
+		String respuesta = "{\r\n  \"status\": \"200\",\r\n  \"message\": \"Se consultaron los productos de la base de datos\",\r\n  \"code\": \"200\",\r\n}";
+		logger.debug(respuesta);
 		return new ResponseEntity(productos, HttpStatus.OK);
 	}
 

@@ -42,8 +42,7 @@ public class ClienteController {
 	@Autowired
 	JWTProvider jwtProvider;
 
-	private static final Logger logger = LogManager.getLogger("login");
-	private static final Logger logger1 = LogManager.getLogger("cliente");
+	private static final Logger logger = LogManager.getLogger(ClienteController.class);
 
 	@PostMapping("/crear")
 	public ResponseEntity<?> save(@RequestBody Cliente cliente) {
@@ -60,26 +59,26 @@ public class ClienteController {
 				if (clienteService.guardarCliente(clienteNuevo)) {
 					if (clienteService.guardarClienteEnTXT(clienteNuevo)) {
 						String respuesta="{\r\n  \"status\": \"200\",\r\n  \"message\": \"El usuario fue creado satisfactoriamente\",\r\n  \"code\": \"200\"\r\n}";
-						logger1.debug(respuesta);
+						logger.debug(respuesta);
 						return new ResponseEntity(respuesta, HttpStatus.OK);
 					} else {
 						String respuesta="{\r\n  \"status\": \"400\",\r\n  \"message\": \"El usuario fue creado pero no se pudieron almacenar la credenciales. Por favor comunicarse con soporte.\",\r\n  \"error\": \"No se pudieron almacenar credenciales\",\r\n  \"code\": \"400\",\r\n  \"BackEndMessage\": \"Consulte el log del cliente.\"\r\n}";
-						logger1.info(respuesta);
+						logger.info(respuesta);
 						return new ResponseEntity(respuesta,HttpStatus.BAD_REQUEST);
 					}
 				} else {
 					String respuesta="{\r\n  \"status\": \"400\",\r\n  \"message\": \"El usuario no se pudo almacenar en base de datos\",\r\n  \"error\": \"El usuario no se pudo almacenar en base de datos\",\r\n  \"code\": \"400\",\r\n  \"BackEndMessage\": \"Consulte el log del cliente.\"\r\n}";
-					logger1.info(respuesta);
+					logger.info(respuesta);
 					return new ResponseEntity(respuesta,HttpStatus.BAD_REQUEST);
 				}
 			} else {
 				String respuesta="{\r\n  \"status\": \"400\",\r\n  \"message\": \"El cliente ya existe\",\r\n  \"error\": \"El cliente ya existe\",\r\n  \"code\": \"400\",\r\n  \"BackEndMessage\": \"El cliente ya existe\"\r\n}";
-				logger1.info(respuesta);
+				logger.info(respuesta);
 				return new ResponseEntity(respuesta, HttpStatus.BAD_REQUEST);
 			}
 		} else {
 			String respuesta="{\r\n  \"status\": \"400\",\r\n  \"message\": \"Datos incompletos. Por favor ingrese todos los datos\",\r\n  \"error\": \"Datos incompletos\",\r\n  \"code\": \"400\",\r\n  \"BackEndMessage\": \"Datos imcompletos\"\r\n}";
-			logger1.info(respuesta);
+			logger.info(respuesta);
 			return new ResponseEntity(respuesta, HttpStatus.BAD_REQUEST);
 		}
 

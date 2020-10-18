@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductoDaoImp implements ProductoDao {
 
-	private static final Logger logger = LogManager.getLogger("producto");
+	private static final Logger logger = LogManager.getLogger(Producto.class);
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 
@@ -36,6 +36,8 @@ public class ProductoDaoImp implements ProductoDao {
 					producto.setPrecio(resultSet.getDouble("precio"));
 					productos.add(producto);
 				}
+				String log = "Se consultaron los productos en la base de datos";
+				logger.debug(log);
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);

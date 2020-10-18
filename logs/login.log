@@ -1,0 +1,5 @@
+[ERROR] 2020-10-18 16:54:47 com.carritoService.controller.ClienteController - Token expirado, con excepcion en: JWT expired at 2020-10-18T16:51:24Z. Current time: 2020-10-18T16:54:47Z, a difference of 203672 milliseconds.  Allowed clock skew: 0 milliseconds.
+[ERROR] 2020-10-18 16:54:47 com.carritoService.controller.ClienteController - Error de autorizacion
+[ERROR] 2020-10-18 16:55:21 com.carritoService.controller.ClienteController - Token expirado, con excepcion en: JWT expired at 2020-10-18T16:51:24Z. Current time: 2020-10-18T16:55:21Z, a difference of 237973 milliseconds.  Allowed clock skew: 0 milliseconds.
+[DEBUG] 2020-10-18 16:55:23 com.carritoService.controller.ClienteController - Usuario: admin. Logueo Exitoso.
+[ERROR] 2020-10-18 16:58:15 com.carritoService.controller.ClienteController - Error de autorizacion

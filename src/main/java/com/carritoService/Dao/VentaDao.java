@@ -8,5 +8,7 @@ public interface VentaDao {
 	List<Venta> obtenerVentas();
 	boolean guardarVenta(Venta venta);
 	boolean guardarDetalleVenta(Venta venta);
+	List<Venta> buscarPorId(int id);
+	List<Venta> buscarPorCliente(int id);
 
 }

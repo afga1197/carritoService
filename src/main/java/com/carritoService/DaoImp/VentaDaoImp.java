@@ -5,6 +5,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import com.carritoService.model.Venta;
 import com.carritoService.Dao.VentaDao;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class VentaDaoImp implements VentaDao {
 
-	private static final Logger logger = LogManager.getLogger("venta");
+	private static final Logger logger = LogManager.getLogger(Venta.class);
 	private PreparedStatement preparedStatement;
 	private ResultSet resultSet;
 
@@ -39,6 +40,8 @@ public class VentaDaoImp implements VentaDao {
 					venta.setIdVenta(resultSet.getInt("idVenta"));
 					ventas.add(venta);
 				}
+				String log = "Se consultaron las ventas en la base de datos";
+				logger.debug(log);
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);
@@ -124,6 +127,90 @@ public class VentaDaoImp implements VentaDao {
 			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
 			logger.error(log);
 			return false;
+		} finally {
+			try {
+				Conexion.getInstance().closeConnection(conectar);
+			} catch (Exception e) {
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
+			}
+		}
+	}
+
+	@Override
+	public List<Venta> buscarPorId(int id) {
+		Connection conectar = null;
+		ArrayList<Venta> ventas = new ArrayList<>();
+		try {
+			conectar = Conexion.getInstance().getConnection();
+			if (conectar != null) {
+				String query = "SELECT dv.idDetalleVenta, dv.idProducto, v.idVenta, v.fecha, v.idCliente FROM detalleventa AS dv INNER JOIN venta AS v ON dv.idVenta=v.idVenta WHERE v.idVenta=?";
+				preparedStatement = conectar.prepareStatement(query);
+				preparedStatement.setInt(1, id);
+				resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					Venta venta = new Venta();
+					venta.setFecha(resultSet.getDate("fecha"));
+					venta.setIdCliente(resultSet.getInt("idCliente"));
+					venta.setIdDetalleVenta(resultSet.getInt("idDetalleVenta"));
+					venta.setIdProducto(resultSet.getInt("idProducto"));
+					venta.setIdVenta(resultSet.getInt("idVenta"));
+					ventas.add(venta);
+				}
+				String log = "Se consultaron las ventas en la base de datos";
+				logger.debug(log);
+				return ventas;
+			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
+				return null;
+			}
+		} catch (SQLException e) {
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
+			return null;
+		} finally {
+			try {
+				Conexion.getInstance().closeConnection(conectar);
+			} catch (Exception e) {
+				String log = "Error al cerrar la conexion, con excepcion en " + e.getMessage();
+				logger.error(log);
+			}
+		}
+	}
+
+	@Override
+	public List<Venta> buscarPorCliente(int id) {
+		Connection conectar = null;
+		ArrayList<Venta> ventas = new ArrayList<>();
+		try {
+			conectar = Conexion.getInstance().getConnection();
+			if (conectar != null) {
+				String query = "SELECT dv.idDetalleVenta, dv.idProducto, v.idVenta, v.fecha, v.idCliente FROM detalleventa AS dv INNER JOIN venta AS v ON dv.idVenta=v.idVenta WHERE v.idCliente=?";
+				preparedStatement = conectar.prepareStatement(query);
+				preparedStatement.setInt(1, id);
+				resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					Venta venta = new Venta();
+					venta.setFecha(resultSet.getDate("fecha"));
+					venta.setIdCliente(resultSet.getInt("idCliente"));
+					venta.setIdDetalleVenta(resultSet.getInt("idDetalleVenta"));
+					venta.setIdProducto(resultSet.getInt("idProducto"));
+					venta.setIdVenta(resultSet.getInt("idVenta"));
+					ventas.add(venta);
+				}
+				String log = "Se consultaron las ventas en la base de datos";
+				logger.debug(log);
+				return ventas;
+			} else {
+				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
+				logger.error(log);
+				return null;
+			}
+		} catch (SQLException e) {
+			String log = "Error en la ejecucion del query, con excepcion en " + e.getMessage();
+			logger.error(log);
+			return null;
 		} finally {
 			try {
 				Conexion.getInstance().closeConnection(conectar);

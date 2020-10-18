@@ -1,5 +1,6 @@
 package com.carritoService.serviceImp;
 
+import rx.Single;
 import java.util.List;
 import com.carritoService.model.Venta;
 import com.carritoService.Dao.VentaDao;
@@ -28,4 +29,19 @@ public class VentaServiceImp implements VentaService {
 		return ventaDao.guardarDetalleVenta(venta);
 	}
 
+	@Override
+	public Single<List<Venta>> buscarPorId(int id) {
+		return Single.create(singleSubscriber -> {
+			List<Venta> ventasId = ventaDao.buscarPorId(id);
+			singleSubscriber.onSuccess(ventasId);
+		});
+	}
+
+	@Override
+	public Single<List<Venta>> buscarPorCliente(int id) {
+		return Single.create(singleSubcriber ->{
+			List<Venta> ventasCliente = ventaDao.buscarPorCliente(id);
+			singleSubcriber.onSuccess(ventasCliente);
+		});
+	}
 }

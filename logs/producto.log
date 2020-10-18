@@ -1,0 +1,11 @@
+[DEBUG] 2020-10-18 16:40:31 com.carritoService.model.Producto - {
+  "status": "200",
+  "message": "Se consultaron los productos de la base de datos",
+  "code": "200",
+}
+[DEBUG] 2020-10-18 16:44:27 com.carritoService.model.Producto - Se consultaron los productos en la base de datos
+[DEBUG] 2020-10-18 16:44:27 com.carritoService.model.Producto - {
+  "status": "200",
+  "message": "Se consultaron los productos de la base de datos",
+  "code": "200",
+}

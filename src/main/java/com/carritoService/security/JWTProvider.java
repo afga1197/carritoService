@@ -10,6 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import org.springframework.stereotype.Component;
+
+import com.carritoService.controller.ClienteController;
 import com.carritoService.model.ClientesSeguridad;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,8 +24,8 @@ public class JWTProvider {
 
 	@Value("${jwt.expiration}")
 	private int expiration;
-
-	private static final Logger logger = LogManager.getLogger("seguridad");
+	
+	private static final Logger logger = LogManager.getLogger(ClienteController.class);
 
 	public String generarToken(Authentication authentication) {
 		ClientesSeguridad clienteSeguridad = (ClientesSeguridad) authentication.getPrincipal();

@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.carritoService.controller.ClienteController;
 import com.carritoService.serviceImp.ClienteServiceImp;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,8 @@ public class JWTFiltroToken extends OncePerRequestFilter {
 
 	@Autowired
 	ClienteServiceImp clienteServiceImp;
-
-	private static final Logger logger = LogManager.getLogger("seguridad");
+	
+	private static final Logger logger = LogManager.getLogger(ClienteController.class);
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
