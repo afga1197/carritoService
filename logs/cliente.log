@@ -1,14 +1,26 @@
-[DEBUG] 2020-10-18 16:40:30 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:40:31 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
-[DEBUG] 2020-10-18 16:44:26 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:44:27 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
-[DEBUG] 2020-10-18 16:55:22 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:55:23 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
-[DEBUG] 2020-10-18 16:55:48 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:55:48 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
-[DEBUG] 2020-10-18 16:56:42 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:56:43 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
-[DEBUG] 2020-10-18 16:57:44 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:57:44 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
-[DEBUG] 2020-10-18 16:58:42 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
-[DEBUG] 2020-10-18 16:58:42 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
+[INFO ] 2020-10-18 17:13:53 com.carritoService.DaoImp.ClienteDaoImp - Se almaceno el cliente en la base de datos
+[DEBUG] 2020-10-18 17:13:53 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[DEBUG] 2020-10-18 17:13:54 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
+[INFO ] 2020-10-18 18:06:00 com.carritoService.DaoImp.ClienteDaoImp - Se realizo la consulta a la base de datos
+[INFO ] 2020-10-18 18:06:00 com.carritoService.DaoImp.ClienteDaoImp - Se almaceno el cliente en la base de datos
+[DEBUG] 2020-10-18 18:06:00 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron las credenciales del usuario
+[DEBUG] 2020-10-18 18:06:00 com.carritoService.DaoImp.ClienteDaoImp - Se almacenaron las credenciales del usuario
+[DEBUG] 2020-10-18 18:06:01 com.carritoService.DaoImp.ClienteDaoImp - Se almacenaron las credenciales del usuario
+[INFO ] 2020-10-18 18:07:46 com.carritoService.DaoImp.ClienteDaoImp - Se almaceno el cliente en la base de datos
+[DEBUG] 2020-10-18 18:07:47 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[DEBUG] 2020-10-18 18:07:47 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
+[ERROR] 2020-10-20 13:14:23 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:14:23 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null
+[DEBUG] 2020-10-20 13:14:23 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[ERROR] 2020-10-20 13:14:23 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:14:23 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:58:16 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:58:16 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null
+[DEBUG] 2020-10-20 13:58:16 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[ERROR] 2020-10-20 13:58:16 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:58:16 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null
+[DEBUG] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[ERROR] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null

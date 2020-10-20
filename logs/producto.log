@@ -1,11 +1,16 @@
-[DEBUG] 2020-10-18 16:40:31 com.carritoService.model.Producto - {
-  "status": "200",
-  "message": "Se consultaron los productos de la base de datos",
-  "code": "200",
-}
-[DEBUG] 2020-10-18 16:44:27 com.carritoService.model.Producto - Se consultaron los productos en la base de datos
-[DEBUG] 2020-10-18 16:44:27 com.carritoService.model.Producto - {
-  "status": "200",
-  "message": "Se consultaron los productos de la base de datos",
-  "code": "200",
-}
+[ERROR] 2020-10-18 17:13:54 com.carritoService.model.Producto - Error en la ejecucion del query, con excepcion en null
+[ERROR] 2020-10-18 17:13:54 com.carritoService.model.Producto - Error en la ejecucion del query, con excepcion en null
+[ERROR] 2020-10-18 18:07:47 com.carritoService.model.Producto - Error en la ejecucion del query, con excepcion en null
+[ERROR] 2020-10-18 18:07:47 com.carritoService.model.Producto - Error en la ejecucion del query, con excepcion en null
+[ERROR] 2020-10-20 13:14:24 com.carritoService.model.Producto - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:14:24 com.carritoService.model.Producto - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:14:24 com.carritoService.model.Producto - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:14:24 com.carritoService.model.Producto - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:58:17 com.carritoService.model.Producto - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:58:17 com.carritoService.model.Producto - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:58:17 com.carritoService.model.Producto - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:58:17 com.carritoService.model.Producto - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:59:30 com.carritoService.model.Producto - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:59:30 com.carritoService.model.Producto - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 13:59:30 com.carritoService.model.Producto - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 13:59:30 com.carritoService.model.Producto - Error al cerrar la conexion, con excepcion en null
