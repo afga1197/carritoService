@@ -1,7 +1,6 @@
 package com.carritoService.model;
 
 import org.springframework.http.HttpStatus;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ErrorInfo {
@@ -14,6 +13,9 @@ public class ErrorInfo {
 	private int code;
 	@JsonProperty("BackMenssage")
 	private String backMenssage;
+
+	public ErrorInfo() {
+	}
 
 	public ErrorInfo(HttpStatus status, String message, int code, String backMenssage) {
 		this.status = status;
