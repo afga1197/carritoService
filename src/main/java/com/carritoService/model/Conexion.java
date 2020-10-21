@@ -6,6 +6,8 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.carritoService.controller.ClienteController;
+
 public class Conexion {
 
 	private final String DATABASE = "carritoservice";
@@ -14,7 +16,7 @@ public class Conexion {
 	private final String PASSWORD = "root";
 	private static Conexion conexion;
 	private BasicDataSource basicDataSource = null;
-	private static final Logger logger = LogManager.getLogger("conexion");
+	private static final Logger logger = LogManager.getLogger(ClienteController.class);
 
 	private Conexion() {
 		basicDataSource = new BasicDataSource();

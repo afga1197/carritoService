@@ -3,6 +3,8 @@ package com.carritoService.controller;
 import rx.Single;
 import java.util.List;
 import rx.schedulers.Schedulers;
+
+import com.carritoService.model.ErrorInfo;
 import com.carritoService.model.Venta;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,9 @@ public class VentaController {
 
 	@Autowired
 	private VentaService ventaService;
+	
+	@Autowired
+	private ErrorInfo errorInfo;
 
 	private static final Logger logger = LogManager.getLogger(Venta.class);
 
@@ -31,34 +36,34 @@ public class VentaController {
 	@GetMapping("/listar")
 	public ResponseEntity<List<Venta>> listar() {
 		List<Venta> ventas = ventaService.obtenerVentas();
-		String respuesta = "{\r\n  \"status\": \"200\",\r\n  \"message\": \"Se consultaron las ventas\",\r\n  \"code\": \"200\",\r\n}";
-		logger.debug(respuesta);
+		errorInfo=new ErrorInfo(HttpStatus.OK, "Se consultaron las ventas", HttpStatus.OK.value(), "Consulta exitosa");
+		logger.debug(errorInfo);
 		return new ResponseEntity(ventas, HttpStatus.OK);
 	}
 
 	@PostMapping("/crear")
 	public ResponseEntity<?> save(@RequestBody Venta venta) {
 		if (ventaService.guardarVenta(venta)) {
-			String respuesta = "{\r\n  \"status\": \"200\",\r\n  \"message\": \"La venta fue creada satisfactoriamente\",\r\n  \"code\": \"200\",\r\n}";
-			logger.debug(respuesta);
-			return new ResponseEntity(respuesta, HttpStatus.OK);
+			errorInfo=new ErrorInfo(HttpStatus.OK, "La venta fue creada satisfactoriamente", HttpStatus.OK.value(), "Consulta exitosa");
+			logger.debug(errorInfo);
+			return new ResponseEntity(errorInfo, HttpStatus.OK);
 		} else {
-			String respuesta = "{\r\n  \"status\": \"400\",\r\n  \"message\": \"No se pudo registrar la venta satisfactoriamente\",\r\n  \"error\": \"Error en el registro.\",\r\n  \"code\": \"400\",\r\n  \"BackEndMessage\": \"Consulte log de ventas para mas informacion acerca del error.\"\r\n}";
-			logger.info(respuesta);
-			return new ResponseEntity(respuesta, HttpStatus.BAD_REQUEST);
+			errorInfo=new ErrorInfo(HttpStatus.BAD_REQUEST, "No se pudo registrar la venta satisfactoriamente", HttpStatus.BAD_REQUEST.value(), "Consulte el log ventas para mas informacion");
+			logger.info(errorInfo);
+			return new ResponseEntity(errorInfo, HttpStatus.BAD_REQUEST);
 		}
 	}
 
 	@PostMapping("/crearDetalleVenta")
 	public ResponseEntity<?> saveDetalleVenta(@RequestBody Venta venta) {
 		if (ventaService.guardarDetalleVenta(venta)) {
-			String respuesta = "{\r\n  \"status\": \"200\",\r\n  \"message\": \"El detalle de la venta fue creada satisfactoriamente\",\r\n  \"code\": \"200\",\r\n}";
-			logger.debug(respuesta);
-			return new ResponseEntity(respuesta, HttpStatus.OK);
+			errorInfo=new ErrorInfo(HttpStatus.OK, "El detalle de la venta fue creada satisfactoriamente", HttpStatus.OK.value(), "Consulta exitosa");
+			logger.debug(errorInfo);
+			return new ResponseEntity(errorInfo, HttpStatus.OK);
 		} else {
-			String respuesta = "{\r\n  \"status\": \"400\",\r\n  \"message\": \"No se pudo registrar el detalle de la venta satisfactoriamente\",\r\n  \"error\": \"Error en el registro.\",\r\n  \"code\": \"400\",\r\n  \"BackEndMessage\": \"Consulte log de ventas para mas informacion acerca del error.\"\r\n}";
-			logger.info(respuesta);
-			return new ResponseEntity(respuesta, HttpStatus.BAD_REQUEST);
+			errorInfo=new ErrorInfo(HttpStatus.BAD_REQUEST, "No se pudo registrar el detalle de la venta satisfactoriamente", HttpStatus.BAD_REQUEST.value(), "Consulte el log ventas para mas informacion");
+			logger.info(errorInfo);
+			return new ResponseEntity(errorInfo, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
