@@ -1,5 +1,8 @@
 package com.carritoService;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import com.carritoService.model.Cliente;
 import com.carritoService.DaoImp.ClienteDaoImp;
@@ -19,7 +22,7 @@ class ClienteTest {
 		cliente.setNombre("sofia");
 		cliente.setTelefono(2528192);
 		cliente.setUsuario("alfaroquintanasofia");
-		clienteDaoImp.guardarCliente(cliente);
+		assertTrue(clienteDaoImp.guardarCliente(cliente));
 	}
 	
 	@Test
@@ -28,7 +31,7 @@ class ClienteTest {
 		Cliente cliente = new Cliente();
 		cliente.setConstrasenia("12345");
 		cliente.setUsuario("afga97");
-		clienteDaoImp.loadUserByUsername(cliente.getUsuario());
+		assertNotNull(clienteDaoImp.loadUserByUsername(cliente.getUsuario()));
 	}
 
 }

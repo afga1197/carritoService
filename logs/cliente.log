@@ -24,3 +24,14 @@
 [DEBUG] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
 [ERROR] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
 [ERROR] 2020-10-20 13:59:30 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en null
+[ERROR] 2020-10-20 20:43:11 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 20:43:11 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en Cannot invoke "java.sql.Connection.close()" because "connection" is null
+[DEBUG] 2020-10-20 20:43:12 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[ERROR] 2020-10-20 20:43:12 com.carritoService.DaoImp.ClienteDaoImp - Error al conectarse a la base de datos, consulte el log de conexion para mas informacion
+[ERROR] 2020-10-20 20:43:12 com.carritoService.DaoImp.ClienteDaoImp - Error al cerrar la conexion, con excepcion en Cannot invoke "java.sql.Connection.close()" because "connection" is null
+[INFO ] 2020-10-20 20:45:30 com.carritoService.DaoImp.ClienteDaoImp - Se almaceno el cliente en la base de datos
+[DEBUG] 2020-10-20 20:45:30 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[DEBUG] 2020-10-20 20:45:30 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos
+[INFO ] 2020-10-20 20:47:38 com.carritoService.DaoImp.ClienteDaoImp - Se almaceno el cliente en la base de datos
+[DEBUG] 2020-10-20 20:47:38 com.carritoService.DaoImp.ClienteDaoImp - Se obtuvieron las credenciales del usuario
+[DEBUG] 2020-10-20 20:47:38 com.carritoService.DaoImp.ClienteDaoImp - Se consultaron los datos del cliente a la base de datos

@@ -195,6 +195,7 @@ public class ClienteDaoImp implements ClienteDao {
 			} else {
 				String log = "Error al conectarse a la base de datos, consulte el log de conexion para mas informacion";
 				logger.error(log);
+				return null;
 			}
 			Set<Rol> roles = new HashSet<>();
 			Rol rolUser = new Rol((RolNombre.ROLE_USER));

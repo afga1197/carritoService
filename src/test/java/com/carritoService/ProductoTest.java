@@ -1,6 +1,8 @@
 package com.carritoService;
 
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import com.carritoService.DaoImp.ProductoDaoImp;
 import com.carritoService.model.Producto;
@@ -14,7 +16,7 @@ class ProductoTest {
 		producto.setIdProducto(0);
 		producto.setNombre("pasta");
 		producto.setPrecio(14.70);
-		productoDaoImp.actualizar(null);
+		assertTrue(productoDaoImp.actualizar(null));
 	}
 
 }
